@@ -8,6 +8,6 @@ if __name__ == "__main__":
     y = "argument"
 
     print('{} {}'.format(x, y+":")) \
-        if x == 1 else print('{} {}'.format(x, y+'.')) \
+        if x == 1 else print('{} {}'.format(x, y+'s.')) \
         if x == 0 else print('{} {}'.format(x, y+'s:'))
     [print('{}: {}'.format(z, argv[z])) for z in range(1, x + 1)]
