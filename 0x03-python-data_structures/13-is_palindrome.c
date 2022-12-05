@@ -54,6 +54,9 @@ int is_palindrome(listint_t **head)
 {
 	int start, end;
 
+	if (!*head)
+		return (0);
+
 	start = 0;
 	end = size_of_list(head) - 1;
 
