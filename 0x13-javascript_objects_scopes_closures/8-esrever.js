@@ -1,5 +1,9 @@
 exports.esrever = function (list) {
-  const newList = [];
-  list.forEach(element => newList.unshift(element));
-  return newList;
+  const len = list.length;
+  for (let i = 0, j = len - 1; i < (len / 2); i++, j--) {
+    const temp = list[i];
+    list[i] = list[j];
+    list[j] = temp;
+  }
+  return list;
 };
