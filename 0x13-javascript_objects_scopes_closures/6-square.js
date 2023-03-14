@@ -7,7 +7,7 @@ class Rectangle {
     }
   }
 
-  print (char = 'X') {
+  print (char) {
     let width = '';
     for (let i = 0; i < this.width; i++) {
       width += char;
@@ -34,7 +34,7 @@ class Square extends Rectangle {
     super(size, size);
   }
 
-  charPrint (c) {
+  charPrint (c = 'X') {
     c === undefined ? this.print() : this.print(c);
   }
 }
