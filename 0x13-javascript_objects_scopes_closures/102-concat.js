@@ -1,14 +1,23 @@
 #!/usr/bin/node
-const fs = require('fs/promises');
+const fs = require('fs');
 const path = require('path');
 const { argv } = process;
 const argc = argv.length;
 
-async function exec (fileA, fileB, fileC) {
-  const fileAContent = await fs.readFile(path.resolve(fileA), 'utf-8');
-  const fileBContent = await fs.readFile(path.resolve(fileB), 'utf-8');
-  const content = `${fileAContent}\n${fileBContent}`;
-  await fs.writeFile(path.resolve(fileC), content);
+function exec (fileA, fileB, fileC) {
+  let output = '';
+  fs.readFile(path.resolve(fileA), 'utf-8', function (err, data) {
+    if (err) throw err;
+    output += data + '\n';
+    fs.readFile(path.resolve(fileB), 'utf-8', function (err2, data2) {
+      if (err2) throw err2;
+      output += data2 + '\n';
+
+      fs.writeFile(path.resolve(fileC), output, function (err3) {
+        if (err3) throw err3;
+      });
+    });
+  });
 }
 
 if (argc === 5) {
