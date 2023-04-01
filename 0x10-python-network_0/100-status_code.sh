@@ -1,3 +1,3 @@
 #!/bin/bash
-# gets content-length of a web page
-curl -I -s $1 | grep HTTP1/1 | cut -d ' ' -f 2
+# Write a Bash script that sends a request and returns status
+curl -s -I $1 | grep -e HTTP/* | cut -d ' ' -f 2
