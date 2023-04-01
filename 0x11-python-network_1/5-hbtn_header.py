@@ -11,4 +11,4 @@ if (__name__ == "__main__"):
 
     if len(argv) == 2:
         response = requests.get(argv[1])
-        print(response.headers['X-Request-Id'])
+        print(response.headers.get('X-Request-Id'))
