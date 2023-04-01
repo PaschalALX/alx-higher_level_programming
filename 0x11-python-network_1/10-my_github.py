@@ -11,10 +11,10 @@ if __name__ == "__main__":
     if len(argv) == 3:
         username = argv[1]
         password = argv[2]
-        git_user_url = "https://api.github.com/user"
+        url = "https://api.github.com/user"
         headers = {
             "Accept": "application/vnd.github+json"
         }
 
-        res = requests.get(git_user_url, auth=(username, password), headers=headers)
+        res = requests.get(url, auth=(username, password), headers=headers)
         print(res.json().get('id'))
