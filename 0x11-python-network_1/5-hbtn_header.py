@@ -6,9 +6,9 @@
     (Request Module)
 '''
 if (__name__ == "__main__"):
-    from request
+    import requests
     from sys import argv
 
     if len(argv) == 2:
-        response = request(argv[1])
-        print(response.header['X-Request-Id'])
+        response = requests.get(argv[1])
+        print(response.headers['X-Request-Id'])
