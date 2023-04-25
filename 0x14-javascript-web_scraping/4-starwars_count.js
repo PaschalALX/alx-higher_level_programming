@@ -6,10 +6,11 @@ request({ url: API_URL, json: true }, function (error, resp, body) {
   if (!error) {
     const results = body.results;
     let num = 0;
-    const pattern = /https:\/\/swapi-api.alx-tools.com\/api\/people\/18\/$/;
+    const characterID = 18;
+    const matchCharacter = `https://swapi-api.alx-tools.com/api/people/${characterID}/`;
     for (const { characters } of results) {
       for (const character of characters) {
-        if (pattern.test(character)) { num++; }
+        if (character === matchCharacter) { num++; }
       }
     }
     console.log(num);
