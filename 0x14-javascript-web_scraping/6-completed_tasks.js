@@ -15,6 +15,7 @@ request({ url: API_URL, json: true }, function (err, resp, body) {
         if (completed) { taskObj[userId] = ++completedTask; }
       } else {
         completedTask = 0;
+        if (completed) { taskObj[userId] = ++completedTask; }
       }
       currentId = userId;
     });
