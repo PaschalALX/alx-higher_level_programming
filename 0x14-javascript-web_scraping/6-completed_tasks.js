@@ -5,20 +5,12 @@ const API_URL = `${process.argv[2]}`;
 
 request({ url: API_URL, json: true }, function (err, resp, body) {
   if (!err) {
-    const taskObj = {};
-    let completedTask = 0;
-    let currentId = 1;
+    const completedTaskByUsers = {};
 
     body.forEach(({ userId, completed }) => {
-      taskObj[userId] = completedTask;
-      if (currentId === userId) {
-        if (completed) { taskObj[userId] = ++completedTask; }
-      } else {
-        completedTask = 0;
-        if (completed) { taskObj[userId] = ++completedTask; }
-      }
-      currentId = userId;
+      if (completed && !completedTaskByUsers[userId]) completedTaskByUsers[userId] = 0;
+      if (completed) completedTaskByUsers[userId]++;
     });
-    console.log(taskObj);
+    console.log(completedTaskByUsers);
   }
 });
